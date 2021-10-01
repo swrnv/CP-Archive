@@ -7,48 +7,48 @@ const int MAX_N = 1e5 + 1;
 const ll MOD = 1e9 + 7;
 const ll INF = 1e9;
 
-int countdig(int n)
-{
-	int count=0;
-	while(n)
-	{
-		++count;
-		n=n\10;
-	}
-	return count;
-}
+// int countdig(int n)
+// {
+// 	int count=0;
+// 	while(n)
+// 	{
+// 		++count;
+// 		n=n\10;
+// 	}
+// 	return count;
+// }
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
-    int tc,n;
-    cin >> tc;
-    while(tc--) {
+    int t,n;
+    cin >> t;
+    for(int j=1; j<=t;++j){
     	cin >> n;
-    	vector<int> v{n,0};
+    	int a[n];
     	for (int i = 0; i < n; ++i)
     	{
-    		cin >> v[i];
+    		cin >> a[i];
+            //copy[i]=v[i];
     	}
-    	vector<int> digits{n,0};
-    	for (int i = 0; i < n; ++i)
-    	{
-    		diigts(i)=countdig(v[i]);
-    	}
-    	// for (int i = n-1; i >=0 ; --i)
-    	// {
-    	// 	int max=v[0];
-    	// 	for (int j=0 ; j<=i ; ++j)
-    	// 	{
-    	// 		if(v[j]>max)
-    	// 		{
-    	// 			max=v[j];
-    	// 		}
-    	// 	}
-    	// 	diff=max-v[i];
-    	for (int i = 0; i < n; ++i)
-    	{
-    		if(v[i]>)
-    	}
+        int count=0;
+        int c=2;
+       while(c){
+       for (int i = 0; i < n-1; ++i)
+       {
+        if(i!=n-2){
+           if(a[i]>=a[i+1])
+           { ++count;
+            a[i+1]=a[i+1]*10;}}
+            else if(i==n-2)
+            {
+        
+           if(a[i]>=a[i+1])
+           { ++count;
+            a[i+1]=a[i+1]*10+1;}
 
-    	}
-    }
+            }
+       }--c;}
+       cout << "Case #" << j << ": " << count << "\n";
+       
+   }
+}
