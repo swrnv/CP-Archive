@@ -1,1 +1,1 @@
-This is an archive for my cp submissions and templates
+A repo to dump CP submissions
