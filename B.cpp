@@ -2,75 +2,78 @@
 using namespace std;
 
 #define ll long long
+
+const int MAX_N = 1e5 + 1;
 const ll MOD = 1e9 + 7;
-const int MAX_N=1e6;
+const ll INF = 1e9;
+
+void solve(int t) {
+
+    ll d,n,k;
+    cin >> d >> n >> k;
+    ll h[n];
+    ll s[n];
+    ll e[n];
+    ll sum=0;
+    ll ans=0;
+    for (int i = 0; i < n; ++i)
+    {
+        cin >> h[i] >> s[i]  >> e[i];
+    }
+   //cout << h[0] << endl;
+    vector<ll> v(d,0);
+    for (int i = 1; i <=d; ++i)
+    {
+        sum=0;
+
+        v.clear();
+
+int cnt=0;
+       for(int j=0;j<n;++j)
+       {
+            if(i>=s[j]&&i<=e[j])
+           { ++cnt; v.push_back(h[j]);}
+       }
+    sort(v.rbegin(),v.rend());
+    //    for(auto it:v)
+    //     cout  << it << " ";
+    // cout << "\n";
+
+    for(int j=0;j<(k<cnt?k:cnt);++j)
+        sum+=v[j];
+    //cout << sum << "\n";
+    //cout << sum << "\n"; 
+    ans=max(sum,ans);
+
+    }
+
+    cout <<"Case #"<< t <<": "<< ans << "\n";
+
+   }
+      
+
+      
 
 
-void solve() {
-	int n;
-	cin >>  n;
-	int ar[n];
-	int ar2[n];
-	map<int,int> m;
-	for (int i = 0; i < n; ++i)
-	{
-		cin >> ar[i];
-		m[ar[i]]=i;
-	}
-	for (int i = 0; i < n; ++i)
-	{
-		cin >> ar2[i];
-		m[ar2[i]]=i;
-	}
-	//cout  << m[2] << "SAsf" << endl;
-    int ans=MAX_N,max=-1;
-    int cnt=0;
-	for (int i = 0; i < n; ++i)
-	{
-		if(ar2[i]>max){
-			for (int j=ar2[i]; j!=max && j>1 ;j-=2 )
-			{
-				//cout << j-1 << "\n";
-				int pos=m[j-1]+i;
-				ans=min(ans,pos);
-			}
-			max=ar2[i];}
-	}
-	//cout <<"----------------------"  << "\n";
-	cout << ans << "\n";
-// 	int pos=-1;
-// 	int pos2=-1;
-// 	for (int i = 0; i < n; ++i)
-// 	{
-// 		if(ar[i])
-// 	}
-// 	for (int i = 0; i < n; ++i)
-// 	{
-// 		if(ar[i]<ar2[0])
-// 		{
-// 			pos2=i;break;
-// 		}
-// 	}
-// cout << min(pos,pos2) << "\n";
+    
 
 
-}
+
+
+   
+
 
 int main() {
     auto begin = std::chrono::high_resolution_clock::now();
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
-    int tc=1;
+    int tc;
     cin >> tc;
-    while(tc--) solve();
+    for (int t = 1; t <= tc; t++) 
+    {
+        solve(t);
+    }
     auto end = std::chrono::high_resolution_clock::now();
         cout << setprecision(4) << fixed;
         //cout << "Execution time: " << std::chrono::duration_cast<std::chrono::duration<double>>(end - begin).count() << " seconds" << endl;
 }
-
-
-// 1
-// 5
-// 7 3 5 9 1
-// 2 4 6 10 8
-// 3   // ans should be 2 while output is 3!
